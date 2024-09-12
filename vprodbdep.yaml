@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myapp
+  name: vprodb
   labels:
     app: vprodb
 spec:
@@ -26,7 +26,7 @@ spec:
           env:
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
-                secretkeyRef:
+                secretKeyRef:
                   name: app-secret
                   key: db-pass
       nodeSelector: 
@@ -34,7 +34,7 @@ spec:
       volumes:
         - name: vpro-db-data
           awsElasticBlockStore:
-            volumeID: vol-0fa367cf858625393
+            volumeID: vol-07b2a93a2ad13b99f
             fsType: ext4 
       
       initContainers:
